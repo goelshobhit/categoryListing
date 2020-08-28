@@ -13,4 +13,20 @@ export default defineMessages({
     id: `${scope}.seeMore`,
     defaultMessage: 'See More',
   },
+  call: {
+    id: `${scope}.call`,
+    defaultMessage: 'Call',
+  },
+  whatsApp: {
+    id: `${scope}.whatApp`,
+    defaultMessage: 'WhatsApp',
+  },
+  map: {
+    id: `${scope}.map`,
+    defaultMessage: 'Map',
+  },
+  share: {
+    id: `${scope}.share`,
+    defaultMessage: 'Share',
+  },
 });
