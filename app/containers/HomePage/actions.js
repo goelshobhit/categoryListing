@@ -4,10 +4,22 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import {
+  GET_CATEGORIES,
+  CATEGORIES_SUCCESS,
+  CATEGORIES_FAIL,
+} from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const getCategories = () => ({
+  type: GET_CATEGORIES,
+});
+
+export const categoriesSuccess = payload => ({
+  type: CATEGORIES_SUCCESS,
+  payload,
+});
+
+export const categoriesFail = error => ({
+  type: CATEGORIES_FAIL,
+  error,
+});

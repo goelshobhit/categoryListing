@@ -4,15 +4,34 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import {
+  GET_CATEGORIES,
+  CATEGORIES_SUCCESS,
+  CATEGORIES_FAIL,
+} from './constants';
 
-export const initialState = {};
+export const initialState = {
+  categories: {
+    loading: false,
+    data: [],
+    error: false,
+  },
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const homePageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case GET_CATEGORIES:
+        draft.categories.loading = true;
+        break;
+      case CATEGORIES_SUCCESS:
+        draft.categories.data = action.payload;
+        draft.categories.loading = false;
+        break;
+      case CATEGORIES_FAIL:
+        draft.categories.loading = false;
+        draft.categories.error = action.error;
         break;
     }
   });

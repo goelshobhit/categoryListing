@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -13,14 +13,20 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import { getCategories } from './actions';
 
-export function HomePage() {
+export function HomePage({ onRequestCategories }) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
+
+  useEffect(() => {
+    onRequestCategories();
+  }, []);
 
   return (
     <div>
@@ -30,7 +36,7 @@ export function HomePage() {
 }
 
 HomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  onRequestCategories: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -39,7 +45,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onRequestCategories: () => dispatch(getCategories()),
   };
 }
 
