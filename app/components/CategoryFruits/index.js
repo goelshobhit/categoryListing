@@ -99,6 +99,13 @@ const useStyles = makeStyles(theme => ({
 function CategoryFruits({ loading, data }) {
   const classes = useStyles();
 
+  function handleToScroll() {
+    const elmnt = document.getElementById('pizza');
+    elmnt.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
@@ -131,7 +138,8 @@ function CategoryFruits({ loading, data }) {
               variant="contained"
               color="secondary"
               className={classes.button}
-              startIcon={<DownloadIcon />}
+              endIcon={<DownloadIcon />}
+              onClick={handleToScroll}
             >
               <Typography className={classes.buttonText}>
                 <FormattedMessage {...messages.seeMore} />

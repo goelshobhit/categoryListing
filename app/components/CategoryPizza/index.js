@@ -115,7 +115,11 @@ function CategoryPizza({ loading, data }) {
     }
     return null;
   }
-  return <div className={classes.root}>{renderContent()}</div>;
+  return (
+    <div className={classes.root} id="pizza">
+      {renderContent()}
+    </div>
+  );
 }
 
 CategoryPizza.propTypes = {
