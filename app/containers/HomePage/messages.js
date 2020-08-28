@@ -13,4 +13,8 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the HomePage container!',
   },
+  shopBy: {
+    id: `${scope}.shopBy`,
+    defaultMessage: 'Shop By Category',
+  },
 });
