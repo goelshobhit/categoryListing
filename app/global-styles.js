@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media (min-width: 600px) {
     #container-sm {
-      padding-left: 150px;
+      padding-left: 250px;
     }
    }
 

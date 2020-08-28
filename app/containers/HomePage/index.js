@@ -16,6 +16,8 @@ import { useInjectReducer } from 'utils/injectReducer';
 
 import Typography from '@material-ui/core/Typography';
 
+import CategoryFruits from 'components/CategoryFruits';
+
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -35,17 +37,14 @@ export function HomePage({
     onRequestCategories();
   }, []);
 
-  console.log(loading);
-  console.log(data);
-
   return (
     <div>
       <div className="d-flex flex-row align-items-center justify-content-center w-100 ">
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           <FormattedMessage {...messages.shopBy} />
         </Typography>
       </div>
-      <FormattedMessage {...messages.header} />
+      <CategoryFruits loading={loading} data={data[0]} />
     </div>
   );
 }
