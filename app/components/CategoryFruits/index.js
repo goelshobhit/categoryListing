@@ -139,8 +139,12 @@ function CategoryFruits({ loading, data }) {
                   className={classes.icon}
                   style={{ fill: THEME_COLOR }}
                 />
-                <Typography variant="subtitle1" noWrap>
-                  {' '}
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  noWrap
+                >
                   <FormattedMessage {...messages.call} />
                 </Typography>
               </div>
@@ -151,8 +155,12 @@ function CategoryFruits({ loading, data }) {
                   className={classes.icon}
                   style={{ fill: THEME_COLOR }}
                 />
-                <Typography variant="subtitle1" noWrap>
-                  {' '}
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  noWrap
+                >
                   <FormattedMessage {...messages.whatsApp} />
                 </Typography>
               </div>
@@ -163,8 +171,12 @@ function CategoryFruits({ loading, data }) {
                   className={classes.icon}
                   style={{ fill: THEME_COLOR }}
                 />
-                <Typography variant="subtitle1" noWrap>
-                  {' '}
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  noWrap
+                >
                   <FormattedMessage {...messages.map} />
                 </Typography>
               </div>
@@ -175,8 +187,12 @@ function CategoryFruits({ loading, data }) {
                   className={classes.icon}
                   style={{ fill: THEME_COLOR }}
                 />
-                <Typography variant="subtitle1" noWrap>
-                  {' '}
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  noWrap
+                >
                   <FormattedMessage {...messages.share} />
                 </Typography>
               </div>
@@ -185,14 +201,9 @@ function CategoryFruits({ loading, data }) {
         </div>
       );
     }
-    return false;
+    return null;
   }
-  return (
-    <div className={classes.root}>
-      {renderContent()}
-      {/*  */}
-    </div>
-  );
+  return <div className={classes.root}>{renderContent()}</div>;
 }
 
 CategoryFruits.propTypes = {
