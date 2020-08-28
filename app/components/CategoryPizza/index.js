@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'nowrap',
     '& > *': {
       margin: theme.spacing(3),
-      minWidth: '90%',
+      minWidth: '100%',
       boxShadow: 'none',
     },
     overflowX: 'auto',

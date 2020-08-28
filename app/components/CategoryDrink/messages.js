@@ -9,8 +9,12 @@ import { defineMessages } from 'react-intl';
 export const scope = 'app.components.CategoryDrink';
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the CategoryDrink component!',
+  covid19Message: {
+    id: `${scope}.covid19Message`,
+    defaultMessage: 'Best Selling',
+  },
+  viewAll: {
+    id: `${scope}.viewAll`,
+    defaultMessage: 'View All',
   },
 });
