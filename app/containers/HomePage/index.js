@@ -17,6 +17,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import Typography from '@material-ui/core/Typography';
 
 import CategoryFruits from 'components/CategoryFruits';
+import CategoryPizza from 'components/CategoryPizza';
 
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
@@ -45,6 +46,7 @@ export function HomePage({
         </Typography>
       </div>
       <CategoryFruits loading={loading} data={data[0]} />
+      <CategoryPizza loading={loading} data={data[1]} />
     </div>
   );
 }

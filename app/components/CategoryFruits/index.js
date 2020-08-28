@@ -42,13 +42,16 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(10),
-      width: theme.spacing(10),
+      height: theme.spacing(7),
+      width: theme.spacing(7),
     },
     boxShadow: 'none',
   },
   media: {
     height: theme.spacing(16),
+    [theme.breakpoints.down('sm')]: {
+      height: theme.spacing(14),
+    },
     backgroundColor: WHITE_COLOR,
   },
   itemText: {
@@ -88,6 +91,9 @@ const useStyles = makeStyles(theme => ({
       height: theme.spacing(7),
       width: theme.spacing(7),
     },
+  },
+  info: {
+    fontWeight: 600,
   },
 }));
 function CategoryFruits({ loading, data }) {
@@ -144,6 +150,7 @@ function CategoryFruits({ loading, data }) {
                   display="block"
                   gutterBottom
                   noWrap
+                  className={classes.info}
                 >
                   <FormattedMessage {...messages.call} />
                 </Typography>
@@ -160,6 +167,7 @@ function CategoryFruits({ loading, data }) {
                   display="block"
                   gutterBottom
                   noWrap
+                  className={classes.info}
                 >
                   <FormattedMessage {...messages.whatsApp} />
                 </Typography>
@@ -176,6 +184,7 @@ function CategoryFruits({ loading, data }) {
                   display="block"
                   gutterBottom
                   noWrap
+                  className={classes.info}
                 >
                   <FormattedMessage {...messages.map} />
                 </Typography>
@@ -192,6 +201,7 @@ function CategoryFruits({ loading, data }) {
                   display="block"
                   gutterBottom
                   noWrap
+                  className={classes.info}
                 >
                   <FormattedMessage {...messages.share} />
                 </Typography>
