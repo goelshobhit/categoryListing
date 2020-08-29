@@ -23,7 +23,11 @@ import DownloadIcon from '@material-ui/icons/CloudDownloadOutlined';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { WHITE_COLOR, THEME_COLOR } from 'containers/App/constants';
+import {
+  WHITE_COLOR,
+  THEME_COLOR,
+  EMPTY_COLOR,
+} from 'containers/App/constants';
 
 import messages from './messages';
 
@@ -50,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: theme.spacing(20),
     },
-    backgroundColor: WHITE_COLOR,
+    backgroundColor: EMPTY_COLOR,
   },
   itemText: {
     textAlign: 'center',
@@ -70,6 +74,7 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: THEME_COLOR,
     },
+    outline: 'none',
     width: '100%',
     margin: theme.spacing(5),
   },

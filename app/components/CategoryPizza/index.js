@@ -20,7 +20,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import DownloadIcon from '@material-ui/icons/ArrowRight';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { WHITE_COLOR, THEME_COLOR } from 'containers/App/constants';
+import { THEME_COLOR, EMPTY_COLOR } from 'containers/App/constants';
 import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: theme.spacing(30),
-    backgroundColor: WHITE_COLOR,
+    backgroundColor: EMPTY_COLOR,
   },
   sectionInfo: {
     paddingTop: theme.spacing(5),
@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: THEME_COLOR,
     },
+    outline: 'none',
     width: '20%',
     [theme.breakpoints.down('sm')]: {
       width: '35%',

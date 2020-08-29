@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
+    outline: 'none',
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
