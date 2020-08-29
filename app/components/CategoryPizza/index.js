@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     flexWrap: 'nowrap',
     '& > *': {
-      margin: theme.spacing(3),
+      margin: theme.spacing(2),
       minWidth: '94%',
       boxShadow: 'none',
     },

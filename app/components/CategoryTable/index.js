@@ -102,7 +102,7 @@ function CategoryTable({ loading, data }) {
             </Button>
           </div>
           <Paper elevation={0} className={classes.root} component="div">
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               {map(listItem, ({ image, name }) => (
                 <Grid item xs={6} key={name}>
                   <Card className={classes.card}>

@@ -21,6 +21,12 @@ import CategoryPizza from 'components/CategoryPizza';
 import CategoryDrink from 'components/CategoryDrink';
 import CategoryTable from 'components/CategoryTable';
 
+import TopBanner from 'components/TopBanner';
+import TopMainBanner from 'components/TopMainBanner';
+import MiddleBanner from 'components/MiddleBanner';
+import MiddleMainBanner from 'components/MiddleMainBanner';
+import BottomBanner from 'components/BottomBanner';
+
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -48,9 +54,14 @@ export function HomePage({
         </Typography>
       </div>
       <CategoryFruits loading={loading} data={data[0]} />
+      <TopBanner />
       <CategoryPizza loading={loading} data={data[1]} />
+      <TopMainBanner isPresent={data.length > 2 || data.length === 2} />
       <CategoryDrink loading={loading} data={data[2]} />
+      <MiddleBanner />
       <CategoryTable loading={loading} data={data[3]} />
+      <MiddleMainBanner isPresent={data.length > 4 || data.length === 4} />
+      <BottomBanner />
     </div>
   );
 }

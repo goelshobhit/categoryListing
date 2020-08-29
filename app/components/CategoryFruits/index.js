@@ -20,10 +20,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 import DownloadIcon from '@material-ui/icons/CloudDownloadOutlined';
-import CallIcon from '@material-ui/icons/Call';
-import WhatShortIcon from '@material-ui/icons/WhatsApp';
-import RoomIcon from '@material-ui/icons/Room';
-import ShareIcon from '@material-ui/icons/Share';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import { WHITE_COLOR, THEME_COLOR } from 'containers/App/constants';
@@ -147,76 +144,6 @@ function CategoryFruits({ loading, data }) {
               </Typography>
             </Button>
           </Paper>
-          <Grid container spacing={3} className={classes.smallBanner}>
-            <Grid item xs={3}>
-              <div className="d-flex flex-column align-items-center justify-content-center">
-                <CallIcon
-                  className={classes.icon}
-                  style={{ fill: THEME_COLOR }}
-                />
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  noWrap
-                  className={classes.info}
-                >
-                  <FormattedMessage {...messages.call} />
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="d-flex flex-column align-items-center justify-content-center">
-                <WhatShortIcon
-                  className={classes.icon}
-                  style={{ fill: THEME_COLOR }}
-                />
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  noWrap
-                  className={classes.info}
-                >
-                  <FormattedMessage {...messages.whatsApp} />
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="d-flex flex-column align-items-center justify-content-center">
-                <RoomIcon
-                  className={classes.icon}
-                  style={{ fill: THEME_COLOR }}
-                />
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  noWrap
-                  className={classes.info}
-                >
-                  <FormattedMessage {...messages.map} />
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="d-flex flex-column align-items-center justify-content-center">
-                <ShareIcon
-                  className={classes.icon}
-                  style={{ fill: THEME_COLOR }}
-                />
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  noWrap
-                  className={classes.info}
-                >
-                  <FormattedMessage {...messages.share} />
-                </Typography>
-              </div>
-            </Grid>
-          </Grid>
         </div>
       );
     }
