@@ -34,11 +34,6 @@ jobs:
           - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
 
       - run:
-          name: Add .env
-          command: |
-            touch .env
-
-      - run:
           name: lint
           command: |
             yarn lint
@@ -47,6 +42,11 @@ jobs:
           name: run build
           command: |
             yarn build
+
+      - run:
+          name: run heroku deploy
+          command: |
+                git push heroku master
 
       - store_artifacts:
           path: build
