@@ -1,46 +1,3 @@
-# version: 2.1
-# workflows:
-#   steps:
-#           - checkout
-
-#           # Download and cache dependencies
-#           - restore_cache:
-#               keys:
-#               - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-#               # fallback to using the latest cache if no exact match is found
-#               - v1-dependencies-
-
-#           - run:
-#               name: install dependencies
-#               command: |
-#                 yarn
-
-#           - save_cache:
-#               key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-#               paths:
-#               - node_modules
-#               - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
-
-#           - run:
-#               name: Add .env
-#               command: |
-#                 touch .env
-
-#           - run:
-#               name: lint
-#               command: |
-#                 yarn lint
-
-#           - run:
-#               name: run build
-#               command: |
-#                 yarn build
-
-#           - run:
-#               name: deploy
-#               command: |
-#                 git push heroku master
-
 # This code is licensed from CircleCI to the user under the MIT license. See
 # https://circleci.com/orbs/registry/licensing for details.
 commands:
@@ -51,6 +8,8 @@ commands:
     - run:
         command: mkdir -p artifacts
         name: Ensure artifacts directory is present
+    - run: yarn build
+    - run: cp -r build artifacts
   coverage:
     description: |
       Generate coverage report using Jest and Istanbul
@@ -76,6 +35,8 @@ commands:
     - run:
         command: mkdir -p artifacts/stylelint
         name: Ensure artifacts directory is present
+    - run: yarn --silent stylelint --custom-formatter './node_modules/stylelint-junit-formatter'
+        > ./artifacts/stylelint/stylelint.xml
   test:
     description: |
       Run tests using Jest
