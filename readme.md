@@ -7,6 +7,8 @@ categoryListing is a cloud-enabled, mobile-ready, offline-storage, ReactJS power
   - Material UI
   - React Hooks
   - Axios
+  - CircleCI
+  - Heroku
   
 # Demo URL
     
@@ -37,6 +39,8 @@ categoryListing uses a number of open source projects to work properly:
 * [VSCode Editor] - awesome  text editor
 * [json-server] - evented I/O for the backend
 * [React-Boilerplate] - App architecture
+* [CircleCI] - CI used for deployment
+* [Heroku] - Hosting server
 
 
 ### Installation
