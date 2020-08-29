@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /**
  *
- * CategoryPizza
+ * CategoryTable
  *
  */
 
@@ -16,11 +16,13 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
 import Skeleton from '@material-ui/lab/Skeleton';
 import DownloadIcon from '@material-ui/icons/ArrowRight';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { WHITE_COLOR, THEME_COLOR } from 'containers/App/constants';
+
 import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
@@ -30,23 +32,20 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'nowrap',
     '& > *': {
       margin: theme.spacing(3),
-      minWidth: '94%',
+      width: '100%',
       boxShadow: 'none',
     },
     overflowX: 'auto',
   },
   card: {
-    [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(30),
-      minWidth: '70%',
-    },
     boxShadow: 'none',
-    backgroundColor: `${THEME_COLOR}`,
-    margin: '0 0 10px 5px',
     border: `1px solid ${THEME_COLOR}`,
+    margin: '0 0 0 5px',
+    minWidth: '49%',
   },
   media: {
     height: theme.spacing(30),
+    width: '98%',
     backgroundColor: WHITE_COLOR,
   },
   sectionInfo: {
@@ -70,19 +69,12 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
   },
 }));
-
-function CategoryPizza({ loading, data }) {
+function CategoryTable({ loading, data }) {
   const classes = useStyles();
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
-        <Skeleton
-          variant="rect"
-          width={60}
-          height={319}
-          key={Math.random()}
-          animation="wave"
-        />
+        <Skeleton variant="rect" width={60} height={319} key={Math.random()} />
       ));
     }
 
@@ -91,7 +83,7 @@ function CategoryPizza({ loading, data }) {
       return (
         <Paper>
           <div
-            className={`d-flex flex-row align-items-center justify-content-between + ${
+            className={`d-flex flex-row align-items-center justify-content-between w-100+ ${
               classes.sectionInfo
             }`}
           >
@@ -110,15 +102,19 @@ function CategoryPizza({ loading, data }) {
             </Button>
           </div>
           <Paper elevation={0} className={classes.root} component="div">
-            {map(listItem, ({ image, name }) => (
-              <Card className={classes.card} key={name}>
-                <CardMedia
-                  className={classes.media}
-                  image={image}
-                  title={name}
-                />
-              </Card>
-            ))}
+            <Grid container spacing={3}>
+              {map(listItem, ({ image, name }) => (
+                <Grid item xs={6} key={name}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.media}
+                      image={image}
+                      title={name}
+                    />
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Paper>
         </Paper>
       );
@@ -132,9 +128,9 @@ function CategoryPizza({ loading, data }) {
   );
 }
 
-CategoryPizza.propTypes = {
+CategoryTable.propTypes = {
   loading: PropTypes.bool,
   data: PropTypes.object,
 };
 
-export default CategoryPizza;
+export default CategoryTable;

@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
       height: theme.spacing(7),
       width: theme.spacing(7),
     },
+    border: `1px solid ${THEME_COLOR}`,
     boxShadow: 'none',
   },
   media: {

@@ -19,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import CategoryFruits from 'components/CategoryFruits';
 import CategoryPizza from 'components/CategoryPizza';
 import CategoryDrink from 'components/CategoryDrink';
+import CategoryTable from 'components/CategoryTable';
 
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
@@ -49,6 +50,7 @@ export function HomePage({
       <CategoryFruits loading={loading} data={data[0]} />
       <CategoryPizza loading={loading} data={data[1]} />
       <CategoryDrink loading={loading} data={data[2]} />
+      <CategoryTable loading={loading} data={data[3]} />
     </div>
   );
 }
