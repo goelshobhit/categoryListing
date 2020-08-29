@@ -1,8 +1,8 @@
-# ContainerListing
+# categoryListing
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-ContainerListing is a cloud-enabled, mobile-ready, offline-storage, ReactJS powered with react hooks and material ui.
+categoryListing is a cloud-enabled, mobile-ready, offline-storage, ReactJS powered with react hooks and material ui.
 
   - Material UI
   - React Hooks
@@ -31,7 +31,7 @@ ContainerListing is a cloud-enabled, mobile-ready, offline-storage, ReactJS powe
             - that folder server separately on heroku
 ### Tech
 
-Dillinger uses a number of open source projects to work properly:
+categoryListing uses a number of open source projects to work properly:
 
 * [Material UI] - HTML enhanced for web apps!
 * [VSCode Editor] - awesome  text editor
