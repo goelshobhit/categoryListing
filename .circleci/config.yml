@@ -40,9 +40,6 @@
 #               name: deploy
 #               command: |
 #                 git push heroku master
-
-orbs:
-  react: 'thefrontside/react@dev:alpha'
 version: 2.1
 workflows:
   push:
