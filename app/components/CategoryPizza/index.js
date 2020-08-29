@@ -21,7 +21,6 @@ import DownloadIcon from '@material-ui/icons/ArrowRight';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { WHITE_COLOR, THEME_COLOR } from 'containers/App/constants';
-
 import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'nowrap',
     '& > *': {
       margin: theme.spacing(3),
-      minWidth: '100%',
+      minWidth: '94%',
       boxShadow: 'none',
     },
     overflowX: 'auto',
@@ -42,12 +41,12 @@ const useStyles = makeStyles(theme => ({
       minWidth: '70%',
     },
     boxShadow: 'none',
-    backgroundColor: '#D5D5D5',
+    backgroundColor: `${THEME_COLOR}`,
     margin: '0 0 0 5px',
+    border: `1px solid ${THEME_COLOR}`,
   },
   media: {
     height: theme.spacing(30),
-    width: '95%',
     backgroundColor: WHITE_COLOR,
   },
   sectionInfo: {
@@ -61,18 +60,25 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: THEME_COLOR,
     },
-    width: '30%',
+    width: '20%',
   },
   info: {
     fontWeight: 600,
   },
 }));
+
 function CategoryPizza({ loading, data }) {
   const classes = useStyles();
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
-        <Skeleton variant="rect" width={60} height={319} key={Math.random()} />
+        <Skeleton
+          variant="rect"
+          width={60}
+          height={319}
+          key={Math.random()}
+          animation="wave"
+        />
       ));
     }
 
@@ -81,7 +87,7 @@ function CategoryPizza({ loading, data }) {
       return (
         <Paper>
           <div
-            className={`d-flex flex-row align-items-center justify-content-between w-100+ ${
+            className={`d-flex flex-row align-items-center justify-content-between + ${
               classes.sectionInfo
             }`}
           >
