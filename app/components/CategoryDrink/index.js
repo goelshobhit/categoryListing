@@ -37,14 +37,10 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'auto',
   },
   card: {
-    [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(30),
-      maxWidth: '40%',
-    },
     boxShadow: 'none',
-    backgroundColor: '#D5D5D5',
+    border: `1px solid ${THEME_COLOR}`,
     margin: '0 0 0 5px',
-    maxWidth: '80%',
+    minWidth: '49%',
   },
   media: {
     height: theme.spacing(30),
@@ -52,9 +48,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: WHITE_COLOR,
   },
   sectionInfo: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(5),
     paddingLeft: theme.spacing(1.5),
-    paddingBottom: theme.spacing(2),
+    paddingRight: theme.spacing(1.5),
+    paddingBottom: theme.spacing(5),
     width: '100%',
   },
   button: {
@@ -62,7 +59,10 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: THEME_COLOR,
     },
-    width: '30%',
+    width: '20%',
+    [theme.breakpoints.down('sm')]: {
+      width: '30%',
+    },
   },
   info: {
     fontWeight: 600,

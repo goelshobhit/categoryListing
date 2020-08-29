@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     },
     boxShadow: 'none',
     backgroundColor: `${THEME_COLOR}`,
-    margin: '0 0 0 5px',
+    margin: '0 0 10px 5px',
     border: `1px solid ${THEME_COLOR}`,
   },
   media: {
@@ -50,9 +50,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: WHITE_COLOR,
   },
   sectionInfo: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(5),
     paddingLeft: theme.spacing(1.5),
-    paddingBottom: theme.spacing(2),
+    paddingRight: theme.spacing(1.5),
+    paddingBottom: theme.spacing(5),
     width: '100%',
   },
   button: {
@@ -61,6 +62,9 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: THEME_COLOR,
     },
     width: '20%',
+    [theme.breakpoints.down('sm')]: {
+      width: '30%',
+    },
   },
   info: {
     fontWeight: 600,
