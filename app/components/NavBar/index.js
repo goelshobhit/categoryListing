@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -57,8 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer(props) {
-  const { window } = props;
+function ResponsiveDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -69,35 +68,43 @@ function ResponsiveDrawer(props) {
 
   function handleToScroll(value) {
     const elmnt = document.getElementById(value);
-    if (elmnt) {
-      elmnt.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }
+    elmnt.scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
+  function ListItemLink(props) {
+    return (
+      <ListItem
+        button
+        {...props}
+        onClick={() => {
+          handleToScroll(props.href);
+        }}
+      />
+    );
+  }
   const drawer = (
     <div className={classes.nav}>
       <Divider />
       <List>
-        <ListItem button onClick={handleToScroll('fruits')}>
+        <ListItemLink button href="fruits">
           <ListItemText primary="Fruits" />
-        </ListItem>
-        <ListItem button onClick={handleToScroll('pizza')}>
+        </ListItemLink>
+        <ListItemLink button href="pizza">
           <ListItemText primary="Pizza" />
-        </ListItem>
-        <ListItem button onClick={handleToScroll('drinks')}>
+        </ListItemLink>
+        <ListItemLink button href="drinks">
           <ListItemText primary="Drinks" />
-        </ListItem>
-        <ListItem button onClick={handleToScroll('wine')}>
+        </ListItemLink>
+        <ListItemLink button href="wine">
           <ListItemText primary="Wine" />
-        </ListItem>
+        </ListItemLink>
       </List>
     </div>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = undefined;
 
   return (
     <div className={classes.root}>
@@ -161,11 +168,7 @@ function ResponsiveDrawer(props) {
 }
 
 ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
+  ...ResponsiveDrawer,
 };
 
 export default ResponsiveDrawer;

@@ -80,7 +80,7 @@ function CategoryDrink({ loading, data }) {
     if (!isEmpty(data)) {
       const { listItem } = data;
       return (
-        <Paper>
+        <Paper id="drinks">
           <div
             className={`d-flex flex-row align-items-center justify-content-between w-100+ ${
               classes.sectionInfo

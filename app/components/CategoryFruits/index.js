@@ -115,7 +115,7 @@ function CategoryFruits({ loading, data }) {
     if (!isEmpty(data)) {
       const { listItem } = data;
       return (
-        <div>
+        <div id="fruits">
           <Paper elevation={0} className={classes.root} component="div">
             <Grid container spacing={3} className="w-100">
               {map(listItem, ({ image, name }) => (
