@@ -9,8 +9,12 @@ import { defineMessages } from 'react-intl';
 export const scope = 'app.components.BottomBanner';
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the BottomBanner component!',
+  infoHeading: {
+    id: `${scope}.infoHeading`,
+    defaultMessage: 'Powered By',
+  },
+  subHeading1: {
+    id: `${scope}.subHeading1`,
+    defaultMessage: 'Vocal for Local StartUp',
   },
 });

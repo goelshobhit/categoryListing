@@ -11,3 +11,5 @@
 
 export const THEME_COLOR = 'rgb(139,175,74)';
 export const WHITE_COLOR = '#ffffff';
+export const TOP_BANNER_CHECK = 2;
+export const MIDDLE_BANNER_CHECK = 4;

@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCardIcon from '@material-ui/icons/ShoppingCart';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -68,18 +67,31 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  function handleToScroll(value) {
+    const elmnt = document.getElementById(value);
+    if (elmnt) {
+      elmnt.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  }
+
   const drawer = (
     <div className={classes.nav}>
       <Divider />
       <List>
-        {['Fruits', 'Pizza', 'Drink', 'Wines'].map(text => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              <ShoppingCardIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button onClick={handleToScroll('fruits')}>
+          <ListItemText primary="Fruits" />
+        </ListItem>
+        <ListItem button onClick={handleToScroll('pizza')}>
+          <ListItemText primary="Pizza" />
+        </ListItem>
+        <ListItem button onClick={handleToScroll('drinks')}>
+          <ListItemText primary="Drinks" />
+        </ListItem>
+        <ListItem button onClick={handleToScroll('wine')}>
+          <ListItemText primary="Wine" />
+        </ListItem>
       </List>
     </div>
   );

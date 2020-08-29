@@ -27,6 +27,11 @@ import MiddleBanner from 'components/MiddleBanner';
 import MiddleMainBanner from 'components/MiddleMainBanner';
 import BottomBanner from 'components/BottomBanner';
 
+import {
+  TOP_BANNER_CHECK,
+  MIDDLE_BANNER_CHECK,
+} from 'containers/App/constants';
+
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -56,11 +61,20 @@ export function HomePage({
       <CategoryFruits loading={loading} data={data[0]} />
       <TopBanner />
       <CategoryPizza loading={loading} data={data[1]} />
-      <TopMainBanner isPresent={data.length > 2 || data.length === 2} />
+      <TopMainBanner
+        isPresent={
+          data.length > TOP_BANNER_CHECK || data.length === TOP_BANNER_CHECK
+        }
+      />
       <CategoryDrink loading={loading} data={data[2]} />
       <MiddleBanner />
       <CategoryTable loading={loading} data={data[3]} />
-      <MiddleMainBanner isPresent={data.length > 4 || data.length === 4} />
+      <MiddleMainBanner
+        isPresent={
+          data.length > MIDDLE_BANNER_CHECK ||
+          data.length === MIDDLE_BANNER_CHECK
+        }
+      />
       <BottomBanner />
     </div>
   );

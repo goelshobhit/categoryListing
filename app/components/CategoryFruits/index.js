@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(7),
+      height: theme.spacing(20),
       width: theme.spacing(7),
     },
     border: `1px solid ${THEME_COLOR}`,
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: theme.spacing(16),
     [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(14),
+      height: theme.spacing(20),
     },
     backgroundColor: WHITE_COLOR,
   },
@@ -56,8 +56,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: '6px 6px 6px 6px',
     marginBottom: '10px',
+    maxHeight: theme.spacing(5),
     [theme.breakpoints.down('sm')]: {
-      transform: 'translateY(-80px)',
+      transform: 'translateY(-50px)',
       backgroundColor: WHITE_COLOR,
     },
   },
