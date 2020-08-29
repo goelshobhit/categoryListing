@@ -1,42 +1,62 @@
+# version: 2.1
+# workflows:
+#   steps:
+#           - checkout
+
+#           # Download and cache dependencies
+#           - restore_cache:
+#               keys:
+#               - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+#               # fallback to using the latest cache if no exact match is found
+#               - v1-dependencies-
+
+#           - run:
+#               name: install dependencies
+#               command: |
+#                 yarn
+
+#           - save_cache:
+#               key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+#               paths:
+#               - node_modules
+#               - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
+
+#           - run:
+#               name: Add .env
+#               command: |
+#                 touch .env
+
+#           - run:
+#               name: lint
+#               command: |
+#                 yarn lint
+
+#           - run:
+#               name: run build
+#               command: |
+#                 yarn build
+
+#           - run:
+#               name: deploy
+#               command: |
+#                 git push heroku master
+
+orbs:
+  react: 'thefrontside/react@dev:alpha'
 version: 2.1
 workflows:
-  steps:
-          - checkout
-
-          # Download and cache dependencies
-          - restore_cache:
-              keys:
-              - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
-
-          - run:
-              name: install dependencies
-              command: |
-                yarn
-
-          - save_cache:
-              key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-              paths:
-              - node_modules
-              - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
-
-          - run:
-              name: Add .env
-              command: |
-                touch .env
-
-          - run:
-              name: lint
-              command: |
-                yarn lint
-
-          - run:
-              name: run build
-              command: |
-                yarn build
-
-          - run:
-              name: deploy
-              command: |
-                git push heroku master
+  push:
+    jobs:
+      - react/install
+      - react/eslint:
+          requires:
+            - react/install
+      - react/stylelint:
+          requires:
+            - react/install
+      - react/test:
+          requires:
+            - react/install
+      - react/coverage:
+          requires:
+            - react/install
