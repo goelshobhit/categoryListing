@@ -51,8 +51,6 @@ commands:
     - run:
         command: mkdir -p artifacts
         name: Ensure artifacts directory is present
-    - run: yarn build
-    - run: cp -r build artifacts
   coverage:
     description: |
       Generate coverage report using Jest and Istanbul
@@ -78,8 +76,6 @@ commands:
     - run:
         command: mkdir -p artifacts/stylelint
         name: Ensure artifacts directory is present
-    - run: yarn --silent stylelint --custom-formatter './node_modules/stylelint-junit-formatter'
-        > ./artifacts/stylelint/stylelint.xml
   test:
     description: |
       Run tests using Jest
