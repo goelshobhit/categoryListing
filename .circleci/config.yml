@@ -1,60 +1,42 @@
-# Javascript Node CircleCI 2 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/
-#
+version: 2.1
+workflows:
+  steps:
+          - checkout
 
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/node:12.14.1
-    working_directory: ~/repo
+          # Download and cache dependencies
+          - restore_cache:
+              keys:
+              - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
 
-    steps:
-      - checkout
+          - run:
+              name: install dependencies
+              command: |
+                yarn
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - save_cache:
+              key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+              paths:
+              - node_modules
+              - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
 
-      - run:
-          name: install dependencies
-          command: |
-            yarn
+          - run:
+              name: Add .env
+              command: |
+                touch .env
 
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-          paths:
-          - node_modules
-          - /home/ubuntu/nvm/versions/node/12.14.1/lib/node_modules
+          - run:
+              name: lint
+              command: |
+                yarn lint
 
-      - run:
-          name: Add .env
-          command: |
-            touch .env
+          - run:
+              name: run build
+              command: |
+                yarn build
 
-      - run:
-          name: lint
-          command: |
-            yarn lint
-
-      - run:
-          name: run build
-          command: |
-            yarn build
-
-      - run:
-          name: deploy
-          command: |
-            git push heroku master
-
-  workflows:
-  version: 2
-  test-and-deploy:
-    jobs:
-      - build
+          - run:
+              name: deploy
+              command: |
+                git push heroku master
