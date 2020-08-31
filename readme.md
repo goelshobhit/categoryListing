@@ -30,7 +30,14 @@ categoryListing is a cloud-enabled, mobile-ready, offline-storage, ReactJS power
     - Backend
         - json-server
             - contains db.json file
+            - https://github.com/goelshobhit/categoryListing/blob/master/json-server/db.json
             - that folder server separately on heroku
+            - rename package-1.json to package.json
+     - Steps to run BE
+         - cd json-server
+         - rename package-1.json to package.json
+         - yarn install
+         - yarn start 
 ### Tech
 
 categoryListing uses a number of open source projects to work properly:
