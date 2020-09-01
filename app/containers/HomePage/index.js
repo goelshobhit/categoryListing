@@ -7,10 +7,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import { find, filter } from 'lodash';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 
@@ -35,7 +35,6 @@ import {
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import { getCategories } from './actions';
 
 export function HomePage({
@@ -51,14 +50,18 @@ export function HomePage({
     onRequestCategories();
   }, []);
 
+  // find category and banner data
+  const bannerData = find(data, 'content-type');
+  const categoriesData = filter(data, 'headerTitle');
+
   return (
     <div>
       <div className="d-flex flex-row align-items-center justify-content-center w-100 ">
         <Typography variant="h4" gutterBottom>
-          <FormattedMessage {...messages.shopBy} />
+          {categoriesData[0].headerTitle}
         </Typography>
       </div>
-      <CategoryFruits loading={loading} data={data[0]} />
+      <CategoryFruits loading={loading} data={categoriesData[0]} />
       <TopBanner />
       <CategoryPizza loading={loading} data={data[1]} />
       <TopMainBanner
@@ -75,7 +78,7 @@ export function HomePage({
           data.length === MIDDLE_BANNER_CHECK
         }
       />
-      <BottomBanner />
+      <BottomBanner content={bannerData.banners.footerBanner} />
     </div>
   );
 }

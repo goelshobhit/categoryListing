@@ -110,6 +110,24 @@ function CategoryFruits({ loading, data }) {
     });
   }
 
+  function renderViewMoreButton() {
+    if (data.count < 6) {
+      return null;
+    }
+    return (
+      <Button
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        endIcon={<DownloadIcon />}
+        onClick={handleToScroll}
+      >
+        <Typography className={classes.buttonText}>
+          <FormattedMessage {...messages.seeMore} />
+        </Typography>
+      </Button>
+    );
+  }
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
@@ -120,7 +138,7 @@ function CategoryFruits({ loading, data }) {
     if (!isEmpty(data)) {
       const { listItem } = data;
       return (
-        <div id="fruits">
+        <div id={data.href}>
           <Paper elevation={0} className={classes.root} component="div">
             <Grid container spacing={3} className="w-100">
               {map(listItem, ({ image, name }) => (
@@ -138,17 +156,7 @@ function CategoryFruits({ loading, data }) {
                 </Grid>
               ))}
             </Grid>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              endIcon={<DownloadIcon />}
-              onClick={handleToScroll}
-            >
-              <Typography className={classes.buttonText}>
-                <FormattedMessage {...messages.seeMore} />
-              </Typography>
-            </Button>
+            {renderViewMoreButton()}
           </Paper>
         </div>
       );
