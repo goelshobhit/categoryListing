@@ -79,7 +79,7 @@ function CategoryPizza({ loading, data }) {
       return map(Array.from(new Array(3)), () => (
         <Skeleton
           variant="rect"
-          width={60}
+          width={100}
           height={319}
           key={Math.random()}
           animation="wave"

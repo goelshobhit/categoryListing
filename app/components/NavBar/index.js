@@ -95,7 +95,7 @@ function ResponsiveDrawer({ navItems }) {
       <Divider />
       <List>
         {map(navItems, items => (
-          <ListItemLink button href={items.href} key={items.item}>
+          <ListItemLink button href={items.href} key={Math.random()}>
             <ListItemText primary={items.item} />
           </ListItemLink>
         ))}

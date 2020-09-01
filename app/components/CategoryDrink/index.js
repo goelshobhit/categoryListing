@@ -7,8 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+
 import { map, isEmpty } from 'lodash';
 
 import Paper from '@material-ui/core/Paper';
@@ -19,10 +18,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Skeleton from '@material-ui/lab/Skeleton';
 import DownloadIcon from '@material-ui/icons/ArrowRight';
 import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { EMPTY_COLOR, THEME_COLOR } from 'containers/App/constants';
-
-import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,11 +59,12 @@ const useStyles = makeStyles(theme => ({
     outline: 'none',
     width: '20%',
     [theme.breakpoints.down('sm')]: {
-      width: '35%',
+      width: '45%',
     },
   },
   info: {
     fontWeight: 600,
+    maxWidth: '20vw',
   },
 }));
 function CategoryDrink({ loading, data }) {
@@ -73,10 +72,27 @@ function CategoryDrink({ loading, data }) {
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
-        <Skeleton variant="rect" width={60} height={319} key={Math.random()} />
+        <Skeleton variant="rect" width={100} height={319} key={Math.random()} />
       ));
     }
 
+    function renderViewMoreButton() {
+      if (data.count < 6) {
+        return null;
+      }
+      return (
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          endIcon={<DownloadIcon />}
+        >
+          <Typography variant="inherit" noWrap>
+            {data['button-text']}
+          </Typography>
+        </Button>
+      );
+    }
     if (!isEmpty(data)) {
       const { listItem } = data;
       return (
@@ -86,19 +102,12 @@ function CategoryDrink({ loading, data }) {
               classes.sectionInfo
             }`}
           >
-            <Typography variant="inherit" className={classes.info}>
-              <FormattedMessage {...messages.covid19Message} />
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              endIcon={<DownloadIcon />}
-            >
-              <Typography variant="inherit" noWrap>
-                <FormattedMessage {...messages.viewAll} />
+            <Tooltip title={data.headerTitle} aria-label={data.headerTitle}>
+              <Typography variant="inherit" className={classes.info} noWrap>
+                {data.headerTitle}
               </Typography>
-            </Button>
+            </Tooltip>
+            {renderViewMoreButton()}
           </div>
           <Paper elevation={0} className={classes.root} component="div">
             {map(listItem, ({ image, name }) => (

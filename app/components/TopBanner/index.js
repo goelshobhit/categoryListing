@@ -55,7 +55,7 @@ function TopBanner({ content }) {
   return (
     <Grid container spacing={3} className={classes.smallBanner}>
       {map(content, ({ image, name }) => (
-        <Grid item xs={3}>
+        <Grid item xs={3} key={name}>
           <div className="d-flex flex-column align-items-center justify-content-center">
             <img src={image} alt="name" className={classes.icon} />
             <Typography

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { find, filter } from 'lodash';
+import { find, filter, isEmpty } from 'lodash';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 
@@ -20,6 +20,7 @@ import CategoryFruits from 'components/CategoryFruits';
 import CategoryPizza from 'components/CategoryPizza';
 import CategoryDrink from 'components/CategoryDrink';
 import CategoryTable from 'components/CategoryTable';
+import FacebookCirCularProgress from 'components/FacebookCircularProgress';
 
 import TopBanner from 'components/TopBanner';
 import TopMainBanner from 'components/TopMainBanner';
@@ -50,9 +51,20 @@ export function HomePage({
     onRequestCategories();
   }, []);
 
+  if (isEmpty(data) && loading) {
+    return (
+      <div className="d-flex flex-column align-items-center justify-content-center w-100 h-100">
+        <FacebookCirCularProgress />
+      </div>
+    );
+  }
   // find category and banner data
   const bannerData = find(data, 'content-type');
   const categoriesData = filter(data, 'headerTitle');
+
+  if (isEmpty(bannerData) || isEmpty(categoriesData)) {
+    return null;
+  }
 
   return (
     <div>
@@ -69,7 +81,7 @@ export function HomePage({
           data.length > TOP_BANNER_CHECK || data.length === TOP_BANNER_CHECK
         }
       />
-      <CategoryDrink loading={loading} data={data[2]} />
+      <CategoryDrink loading={loading} data={categoriesData[2]} />
       <MiddleBanner />
       <CategoryTable loading={loading} data={data[3]} />
       <MiddleMainBanner
