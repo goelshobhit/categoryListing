@@ -5,10 +5,13 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
+
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function BottomBanner({ content: { heading, subHeading } }) {
+function BottomBanner() {
   const classes = useStyles();
   return (
     <div
@@ -53,7 +56,7 @@ function BottomBanner({ content: { heading, subHeading } }) {
         noWrap
         className={classes.info}
       >
-        {heading}
+        <FormattedMessage {...messages.infoHeading} />
       </Typography>
       <Typography
         variant="inherit"
@@ -62,14 +65,12 @@ function BottomBanner({ content: { heading, subHeading } }) {
         noWrap
         className={classes.infoText}
       >
-        {subHeading}
+        <FormattedMessage {...messages.subHeading1} />
       </Typography>
     </div>
   );
 }
 
-BottomBanner.propTypes = {
-  content: PropTypes.object,
-};
+BottomBanner.propTypes = {};
 
 export default BottomBanner;

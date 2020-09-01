@@ -7,7 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
+// import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import { map, isEmpty } from 'lodash';
 
 import Paper from '@material-ui/core/Paper';
@@ -26,8 +27,9 @@ import {
   WHITE_COLOR,
   THEME_COLOR,
   EMPTY_COLOR,
-  LIST_ITEMS_COUNT,
 } from 'containers/App/constants';
+
+import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -100,9 +102,7 @@ const useStyles = makeStyles(theme => ({
 }));
 function CategoryFruits({ loading, data }) {
   const classes = useStyles();
-  if (isEmpty(data)) {
-    return null;
-  }
+
   function handleToScroll() {
     const elmnt = document.getElementById('pizza');
     elmnt.scrollIntoView({
@@ -110,24 +110,6 @@ function CategoryFruits({ loading, data }) {
     });
   }
 
-  function renderViewMoreButton() {
-    if (data.count < LIST_ITEMS_COUNT) {
-      return null;
-    }
-    return (
-      <Button
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        endIcon={<DownloadIcon />}
-        onClick={handleToScroll}
-      >
-        <Typography className={classes.buttonText}>
-          {data['button-text']}
-        </Typography>
-      </Button>
-    );
-  }
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
@@ -138,7 +120,7 @@ function CategoryFruits({ loading, data }) {
     if (!isEmpty(data)) {
       const { listItem } = data;
       return (
-        <div id={data.href}>
+        <div id="fruits">
           <Paper elevation={0} className={classes.root} component="div">
             <Grid container spacing={3} className="w-100">
               {map(listItem, ({ image, name }) => (
@@ -156,7 +138,17 @@ function CategoryFruits({ loading, data }) {
                 </Grid>
               ))}
             </Grid>
-            {renderViewMoreButton()}
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              endIcon={<DownloadIcon />}
+              onClick={handleToScroll}
+            >
+              <Typography className={classes.buttonText}>
+                <FormattedMessage {...messages.seeMore} />
+              </Typography>
+            </Button>
           </Paper>
         </div>
       );

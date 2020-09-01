@@ -6,11 +6,13 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { THEME_COLOR } from 'containers/App/constants';
+
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function MiddleBanner({ content: { heading, subHeading } }) {
+function MiddleBanner() {
   const classes = useStyles();
   return (
     <div
@@ -58,7 +60,7 @@ function MiddleBanner({ content: { heading, subHeading } }) {
         noWrap
         className={classes.info}
       >
-        {heading}
+        <FormattedMessage {...messages.infoHeading} />
       </Typography>
       <Typography
         variant="inherit"
@@ -67,14 +69,12 @@ function MiddleBanner({ content: { heading, subHeading } }) {
         noWrap
         className={classes.infoText}
       >
-        {subHeading}
+        <FormattedMessage {...messages.subHeading1} />
       </Typography>
     </div>
   );
 }
 
-MiddleBanner.propTypes = {
-  content: PropTypes.object,
-};
+MiddleBanner.propTypes = {};
 
 export default MiddleBanner;
