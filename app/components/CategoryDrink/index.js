@@ -126,7 +126,7 @@ function CategoryDrink({ loading, data }) {
     return null;
   }
   return (
-    <div className={classes.root} id="pizza">
+    <div className={classes.root} id={data.href}>
       {renderContent()}
     </div>
   );

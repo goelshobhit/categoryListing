@@ -82,8 +82,8 @@ export function HomePage({
         }
       />
       <CategoryDrink loading={loading} data={categoriesData[2]} />
-      <MiddleBanner />
-      <CategoryTable loading={loading} data={data[3]} />
+      <MiddleBanner content={bannerData.banners.smallBanner} />
+      <CategoryTable loading={loading} data={categoriesData[3]} />
       <MiddleMainBanner
         isPresent={
           data.length > MIDDLE_BANNER_CHECK ||
