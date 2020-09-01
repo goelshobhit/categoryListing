@@ -24,7 +24,8 @@
           "image": "https://png.pngtree.com/element_pic/00/16/09/0657ce7dc878850.jpg",
           "name": "Cherry"
         }
-      ]
+      ],
+      "button-text": "View More"
     },
     {
       "headerTitle": "Protection against covid-19",
@@ -50,7 +51,8 @@
           "image": "https://encrypted-tbn0.gstatic.com/images?q\u003dtbn:ANd9GcTWVHTyPRtMWuw3Wx0sn-bsOrLCYqy2di2QUfw4V75uchLbrfYT",
           "name": "Pizza 5"
         }
-      ]
+      ],
+      "button-text": "View More"
     },
     {
       "headerTitle": "Best Selling Juices of 2020",
@@ -76,7 +78,8 @@
           "image": "https://png.pngtree.com/element_origin_min_pic/16/09/27/1057e9dc08462c6.jpg",
           "name": "Drink 5"
         }
-      ]
+      ],
+      "button-text": "View More"
     },
     {
       "headerTitle": "Best Selling Drinks of 2020",
@@ -102,7 +105,8 @@
           "image": "http://atlas-content-cdn.pixelsquid.com/stock-images/old-glass-bottle-corkscrew-mdnO39D-600.jpg",
           "name": "Wine 5"
         }
-      ]
+      ],
+      "button-text": "View More"
     },
     {
       "content-type": "Banners",
