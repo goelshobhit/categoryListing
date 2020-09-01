@@ -5,21 +5,16 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-import CallIcon from '@material-ui/icons/Call';
-import WhatShortIcon from '@material-ui/icons/WhatsApp';
+import PropTypes from 'prop-types';
+
+import { map } from 'lodash';
+
 import Typography from '@material-ui/core/Typography';
-import RoomIcon from '@material-ui/icons/Room';
-import ShareIcon from '@material-ui/icons/Share';
 import Grid from '@material-ui/core/Grid';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import { THEME_COLOR } from 'containers/App/constants';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,76 +46,36 @@ const useStyles = makeStyles(theme => ({
   },
   info: {
     fontWeight: 600,
+    textTransform: 'capitalize',
   },
 }));
 
-function TopBanner() {
+function TopBanner({ content }) {
   const classes = useStyles();
   return (
     <Grid container spacing={3} className={classes.smallBanner}>
-      <Grid item xs={3}>
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <CallIcon className={classes.icon} style={{ fill: THEME_COLOR }} />
-          <Typography
-            variant="button"
-            display="block"
-            gutterBottom
-            noWrap
-            className={classes.info}
-          >
-            <FormattedMessage {...messages.call} />
-          </Typography>
-        </div>
-      </Grid>
-      <Grid item xs={3}>
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <WhatShortIcon
-            className={classes.icon}
-            style={{ fill: THEME_COLOR }}
-          />
-          <Typography
-            variant="button"
-            display="block"
-            gutterBottom
-            noWrap
-            className={classes.info}
-          >
-            <FormattedMessage {...messages.whatsApp} />
-          </Typography>
-        </div>
-      </Grid>
-      <Grid item xs={3}>
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <RoomIcon className={classes.icon} style={{ fill: THEME_COLOR }} />
-          <Typography
-            variant="button"
-            display="block"
-            gutterBottom
-            noWrap
-            className={classes.info}
-          >
-            <FormattedMessage {...messages.map} />
-          </Typography>
-        </div>
-      </Grid>
-      <Grid item xs={3}>
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <ShareIcon className={classes.icon} style={{ fill: THEME_COLOR }} />
-          <Typography
-            variant="button"
-            display="block"
-            gutterBottom
-            noWrap
-            className={classes.info}
-          >
-            <FormattedMessage {...messages.share} />
-          </Typography>
-        </div>
-      </Grid>
+      {map(content, ({ image, name }) => (
+        <Grid item xs={3}>
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            <img src={image} alt="name" className={classes.icon} />
+            <Typography
+              variant="button"
+              display="block"
+              gutterBottom
+              noWrap
+              className={classes.info}
+            >
+              {name}
+            </Typography>
+          </div>
+        </Grid>
+      ))}
     </Grid>
   );
 }
 
-TopBanner.propTypes = {};
+TopBanner.propTypes = {
+  content: PropTypes.array,
+};
 
 export default TopBanner;

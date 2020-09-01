@@ -8,21 +8,4 @@ import { defineMessages } from 'react-intl';
 
 export const scope = 'app.components.TopBanner';
 
-export default defineMessages({
-  call: {
-    id: `${scope}.call`,
-    defaultMessage: 'Call',
-  },
-  whatsApp: {
-    id: `${scope}.whatApp`,
-    defaultMessage: 'WhatsApp',
-  },
-  map: {
-    id: `${scope}.map`,
-    defaultMessage: 'Map',
-  },
-  share: {
-    id: `${scope}.share`,
-    defaultMessage: 'Share',
-  },
-});
+export default defineMessages({});

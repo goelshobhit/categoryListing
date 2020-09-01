@@ -62,8 +62,8 @@ export function HomePage({
         </Typography>
       </div>
       <CategoryFruits loading={loading} data={categoriesData[0]} />
-      <TopBanner />
-      <CategoryPizza loading={loading} data={data[1]} />
+      <TopBanner content={bannerData.banners.topBanner} />
+      <CategoryPizza loading={loading} data={categoriesData[1]} />
       <TopMainBanner
         isPresent={
           data.length > TOP_BANNER_CHECK || data.length === TOP_BANNER_CHECK

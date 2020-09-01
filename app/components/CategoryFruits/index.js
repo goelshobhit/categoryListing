@@ -7,8 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+
 import { map, isEmpty } from 'lodash';
 
 import Paper from '@material-ui/core/Paper';
@@ -28,8 +27,6 @@ import {
   THEME_COLOR,
   EMPTY_COLOR,
 } from 'containers/App/constants';
-
-import messages from './messages';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -123,7 +120,7 @@ function CategoryFruits({ loading, data }) {
         onClick={handleToScroll}
       >
         <Typography className={classes.buttonText}>
-          <FormattedMessage {...messages.seeMore} />
+          {data['button-text']}
         </Typography>
       </Button>
     );
