@@ -72,9 +72,11 @@ function ResponsiveDrawer({ navItems }) {
 
   function handleToScroll(value) {
     const elmnt = document.getElementById(value);
-    elmnt.scrollIntoView({
-      behavior: 'smooth',
-    });
+    if (elmnt) {
+      elmnt.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
   }
 
   function ListItemLink(props) {
@@ -93,8 +95,8 @@ function ResponsiveDrawer({ navItems }) {
       <Divider />
       <List>
         {map(navItems, items => (
-          <ListItemLink button href={items} key={items}>
-            <ListItemText primary={items} />
+          <ListItemLink button href={items.href} key={items.item}>
+            <ListItemText primary={items.item} />
           </ListItemLink>
         ))}
       </List>

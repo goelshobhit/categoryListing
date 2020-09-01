@@ -22,7 +22,10 @@ import makeSelectHomePage from 'containers/HomePage/selectors';
 import GlobalStyle from '../../global-styles';
 
 function getNavItems(data) {
-  return data.map(item => item.headerTitle);
+  return data.map(item => {
+    const mappedData = { item: item.headerTitle, href: item.href };
+    return mappedData;
+  });
 }
 export function App({
   homePage: {
