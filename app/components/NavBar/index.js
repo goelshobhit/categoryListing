@@ -2,7 +2,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { map } from 'lodash';
+import { map, lowerCase } from 'lodash';
 
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -95,7 +95,7 @@ function ResponsiveDrawer({ navItems }) {
       <Divider />
       <List>
         {map(navItems, items => (
-          <ListItemLink button href={items.href} key={Math.random()}>
+          <ListItemLink button href={lowerCase(items.item)} key={Math.random()}>
             <ListItemText primary={items.item} />
           </ListItemLink>
         ))}

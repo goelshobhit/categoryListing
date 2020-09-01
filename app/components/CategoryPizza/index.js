@@ -14,6 +14,7 @@ import { map, isEmpty } from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -37,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(30),
+      height: theme.spacing(40),
       minWidth: '70%',
     },
     boxShadow: 'none',
@@ -64,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     outline: 'none',
     width: '20%',
     [theme.breakpoints.down('sm')]: {
-      width: '35%',
+      width: '45%',
     },
   },
   info: {
@@ -88,7 +89,7 @@ function CategoryPizza({ loading, data }) {
     }
 
     if (!isEmpty(data)) {
-      const { listItem } = data;
+      const { listItem, headerTitle } = data;
       return (
         <Paper>
           <div
@@ -97,7 +98,7 @@ function CategoryPizza({ loading, data }) {
             }`}
           >
             <Typography variant="inherit" className={classes.info}>
-              <FormattedMessage {...messages.covid19Message} />
+              {headerTitle}
             </Typography>
             <Button
               variant="contained"
@@ -118,6 +119,9 @@ function CategoryPizza({ loading, data }) {
                   image={image}
                   title={name}
                 />
+                <CardContent className={classes.itemText}>
+                  <Typography noWrap>{name}</Typography>
+                </CardContent>
               </Card>
             ))}
           </Paper>

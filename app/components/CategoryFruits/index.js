@@ -43,9 +43,10 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      height: theme.spacing(20),
+      height: theme.spacing(30),
       width: theme.spacing(7),
     },
+    backgroundColor: `${THEME_COLOR}`,
     border: `1px solid ${THEME_COLOR}`,
     boxShadow: 'none',
   },
@@ -118,10 +119,13 @@ function CategoryFruits({ loading, data }) {
     }
 
     if (!isEmpty(data)) {
-      const { listItem } = data;
+      const { listItem, headerTitle } = data;
       return (
         <div id="fruits">
           <Paper elevation={0} className={classes.root} component="div">
+            <Typography variant="inherit" className={classes.info}>
+              {headerTitle}
+            </Typography>
             <Grid container spacing={3} className="w-100">
               {map(listItem, ({ image, name }) => (
                 <Grid item xs={3} key={name}>
@@ -131,7 +135,7 @@ function CategoryFruits({ loading, data }) {
                       image={image}
                       title={name}
                     />
-                    <CardContent className={classes.itemText}>
+                    <CardContent>
                       <Typography noWrap>{name}</Typography>
                     </CardContent>
                   </Card>

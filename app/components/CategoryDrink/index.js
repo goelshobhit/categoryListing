@@ -13,6 +13,7 @@ import { map, isEmpty } from 'lodash';
 
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -39,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     boxShadow: 'none',
     border: `1px solid ${THEME_COLOR}`,
+    backgroundColor: `${THEME_COLOR}`,
     margin: '0 0 0 5px',
     minWidth: '49%',
   },
@@ -61,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     outline: 'none',
     width: '20%',
     [theme.breakpoints.down('sm')]: {
-      width: '35%',
+      width: '45%',
     },
   },
   info: {
@@ -73,12 +75,12 @@ function CategoryDrink({ loading, data }) {
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
-        <Skeleton variant="rect" width={60} height={319} key={Math.random()} />
+        <Skeleton variant="rect" width={160} height={319} key={Math.random()} />
       ));
     }
 
     if (!isEmpty(data)) {
-      const { listItem } = data;
+      const { listItem, headerTitle } = data;
       return (
         <Paper id="drinks">
           <div
@@ -87,7 +89,7 @@ function CategoryDrink({ loading, data }) {
             }`}
           >
             <Typography variant="inherit" className={classes.info}>
-              <FormattedMessage {...messages.covid19Message} />
+              {headerTitle}
             </Typography>
             <Button
               variant="contained"
@@ -108,6 +110,9 @@ function CategoryDrink({ loading, data }) {
                   image={image}
                   title={name}
                 />
+                <CardContent className={classes.itemText}>
+                  <Typography noWrap>{name}</Typography>
+                </CardContent>
               </Card>
             ))}
           </Paper>
@@ -117,7 +122,7 @@ function CategoryDrink({ loading, data }) {
     return null;
   }
   return (
-    <div className={classes.root} id="pizza">
+    <div className={classes.root} id="drink">
       {renderContent()}
     </div>
   );
