@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+
+import { map } from 'lodash';
+
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -58,7 +61,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer() {
+function ResponsiveDrawer({ navItems }) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -89,18 +92,11 @@ function ResponsiveDrawer() {
     <div className={classes.nav}>
       <Divider />
       <List>
-        <ListItemLink button href="fruits">
-          <ListItemText primary="Fruits" />
-        </ListItemLink>
-        <ListItemLink button href="pizza">
-          <ListItemText primary="Pizza" />
-        </ListItemLink>
-        <ListItemLink button href="drinks">
-          <ListItemText primary="Drinks" />
-        </ListItemLink>
-        <ListItemLink button href="wine">
-          <ListItemText primary="Wine" />
-        </ListItemLink>
+        {map(navItems, items => (
+          <ListItemLink button href={items} key={items}>
+            <ListItemText primary={items} />
+          </ListItemLink>
+        ))}
       </List>
     </div>
   );
