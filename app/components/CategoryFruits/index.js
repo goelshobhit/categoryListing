@@ -26,6 +26,7 @@ import {
   WHITE_COLOR,
   THEME_COLOR,
   EMPTY_COLOR,
+  LIST_ITEMS_COUNT,
 } from 'containers/App/constants';
 
 const useStyles = makeStyles(theme => ({
@@ -99,7 +100,9 @@ const useStyles = makeStyles(theme => ({
 }));
 function CategoryFruits({ loading, data }) {
   const classes = useStyles();
-
+  if (isEmpty(data)) {
+    return null;
+  }
   function handleToScroll() {
     const elmnt = document.getElementById('pizza');
     elmnt.scrollIntoView({
@@ -108,7 +111,7 @@ function CategoryFruits({ loading, data }) {
   }
 
   function renderViewMoreButton() {
-    if (data.count < 6) {
+    if (data.count < LIST_ITEMS_COUNT) {
       return null;
     }
     return (

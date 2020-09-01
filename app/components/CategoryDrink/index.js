@@ -20,7 +20,11 @@ import DownloadIcon from '@material-ui/icons/ArrowRight';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { EMPTY_COLOR, THEME_COLOR } from 'containers/App/constants';
+import {
+  EMPTY_COLOR,
+  THEME_COLOR,
+  LIST_ITEMS_COUNT,
+} from 'containers/App/constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,6 +73,9 @@ const useStyles = makeStyles(theme => ({
 }));
 function CategoryDrink({ loading, data }) {
   const classes = useStyles();
+  if (isEmpty(data)) {
+    return null;
+  }
   function renderContent() {
     if (loading) {
       return map(Array.from(new Array(3)), () => (
@@ -77,7 +84,7 @@ function CategoryDrink({ loading, data }) {
     }
 
     function renderViewMoreButton() {
-      if (data.count < 6) {
+      if (data.count < LIST_ITEMS_COUNT) {
         return null;
       }
       return (

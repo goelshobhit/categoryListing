@@ -13,4 +13,5 @@ export const THEME_COLOR = 'rgb(139,175,74)';
 export const WHITE_COLOR = '#ffffff';
 export const EMPTY_COLOR = '#f5f5f5';
 export const TOP_BANNER_CHECK = 2;
-export const MIDDLE_BANNER_CHECK = 4;
+export const MIDDLE_BANNER_CHECK = 5;
+export const LIST_ITEMS_COUNT = 6;
